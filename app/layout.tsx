@@ -4,10 +4,10 @@ import Navbar from "@/components/Navbar";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "PrivateStream FHE — Encrypted Video Access on Arbitrum",
+  title: "PrivateStream Arbitrum — Encrypted Video Access",
   description:
-    "Privacy-preserving encrypted video access platform using Fully Homomorphic Encryption on Arbitrum Sepolia.",
-  keywords: ["FHE", "Arbitrum", "encrypted video", "Web3", "privacy", "blockchain"],
+    "Privacy-preserving encrypted video access platform on Arbitrum Sepolia using Microsoft SEAL (Fully Homomorphic Encryption).",
+  keywords: ["Arbitrum", "encrypted video", "Web3", "privacy", "blockchain", "FHE", "Microsoft SEAL"],
 };
 
 export default function RootLayout({

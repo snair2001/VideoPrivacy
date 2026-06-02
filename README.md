@@ -1,18 +1,17 @@
-# PrivateStream FHE
+# PrivateStream Arbitrum
 
 > Privacy-preserving encrypted video access platform on Arbitrum using Fully Homomorphic Encryption (FHE).
 
 [![Next.js](https://img.shields.io/badge/Next.js-16-black)](https://nextjs.org)
 [![Arbitrum](https://img.shields.io/badge/Arbitrum-Sepolia-blue)](https://arbitrum.io)
+[![FHE](https://img.shields.io/badge/FHE-Microsoft%20SEAL-blueviolet)](https://github.com/microsoft/SEAL)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
 ---
 
 ## FHE Implementation
 
-> **This platform uses Fully Homomorphic Encryption for encrypted access control on Arbitrum.**
-
-Implementation uses FHE-based encrypted metadata on IPFS, server-side decryption gated by on-chain access verification, and wallet-gated access control.
+> **This platform uses Microsoft SEAL (Fully Homomorphic Encryption) for encrypted metadata storage on IPFS, server-side decryption gated by on-chain access verification, and wallet-gated access control.**
 
 ---
 

@@ -1,7 +1,7 @@
-# PrivateStream FHE — AI-Assisted Development Journal
+# PrivateStream Arbitrum — AI-Assisted Development Journal
 
 **Developer:** Chandana Shajith
-**Project:** PrivateStream FHE — Privacy-Preserving Encrypted Video Access Platform
+**Project:** PrivateStream Arbitrum — Privacy-Preserving Encrypted Video Access Platform (Microsoft SEAL FHE)
 **Network:** Arbitrum Sepolia (Testnet)
 **Contract Address:** `0x3231cAb7111E7c3bfdc36995fa358c00E1890614`
 **GitHub:** https://github.com/chptt/video_fhe_arb

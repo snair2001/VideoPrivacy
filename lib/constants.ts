@@ -1,9 +1,9 @@
 /**
- * Application-wide constants for PrivateStream FHE.
+ * Application-wide constants for PrivateStream Arbitrum.
  * All blockchain-specific values are sourced from environment variables.
  */
 
-export const APP_NAME = "PrivateStream FHE";
+export const APP_NAME = "PrivateStream Arbitrum";
 export const APP_DESCRIPTION =
   "Privacy-preserving encrypted video access platform on Arbitrum";
 

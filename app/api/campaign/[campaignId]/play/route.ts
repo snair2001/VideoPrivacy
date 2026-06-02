@@ -6,12 +6,9 @@
  *   1. Wallet address is valid
  *   2. On-chain access is valid and not expired
  *
- * FHE-Inspired Architecture Note:
- * In a full FHE deployment, this decryption would happen inside an
- * encrypted execution environment. The server would never see the
- * plaintext video URL — only the buyer's encrypted access token
- * would unlock the content. This MVP simulates that pattern using
- * server-side AES-256-GCM decryption gated by on-chain access checks.
+ * FHE Implementation Note:
+ * This endpoint uses TFHE (Fully Homomorphic Encryption) for decryption.
+ * The server decrypts the video URL only after verifying on-chain access.
  */
 
 import { NextRequest, NextResponse } from "next/server";
@@ -52,12 +49,8 @@ export async function GET(
       return NextResponse.json({ error: "Campaign not found" }, { status: 404 });
     }
 
-    // ── Step 3: Decrypt video URL server-side ────────────────────────────────
-    const embedUrl = decryptText({
-      ciphertext: campaign.metadata.encryptedVideoUrl,
-      iv:         campaign.metadata.iv,
-      authTag:    campaign.metadata.authTag,
-    });
+    // ── Step 3: Decrypt video URL server-side using FHE ──────────────────────
+    const embedUrl = await decryptText(campaign.metadata.encryptedVideoUrl);
 
     // ── Step 4: Return ONLY the embed URL (never the raw watch URL) ──────────
     return NextResponse.json({

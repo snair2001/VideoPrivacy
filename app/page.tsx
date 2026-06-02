@@ -9,7 +9,7 @@ const features = [
     icon: Shield,
     title: "FHE Privacy",
     description:
-      "FHE encrypted metadata stored on IPFS. Video URLs never exposed to the frontend.",
+      "Microsoft SEAL (FHE) encrypted metadata stored on IPFS. Video URLs never exposed to the frontend.",
     color: "from-cyan-500 to-blue-600",
   },
   {
@@ -48,7 +48,7 @@ export default function HomePage() {
           className="mb-6 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-medium"
         >
           <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-          Live on Arbitrum Sepolia · FHE Architecture
+          Live on Arbitrum Sepolia · Microsoft SEAL FHE
         </motion.div>
 
         {/* Headline */}

@@ -16,8 +16,6 @@ export interface CampaignMetadata {
   title: string;
   description: string;
   encryptedVideoUrl: string;
-  iv: string;
-  authTag: string;
   creatorAddress: string;
   priceWei: string;
   durationSeconds: number;
