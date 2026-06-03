@@ -13,7 +13,7 @@
   "env": {
     "NEXT_PUBLIC_CHAIN_ID": "421614",
     "NEXT_PUBLIC_RPC_URL": "https://sepolia-rollup.arbitrum.io/rpc",
-    "PINATA_GATEWAY_URL": "https://gateway.pinata.cloud",
+    "PINATA_GATEWAY_URL": "https://amethyst-geographical-goose-114.mypinata.cloud",
     "REVENUE_CAP_USD": "20",
     "PLATFORM_FEE_PERCENTAGE": "10",
     "ETH_USD_FALLBACK": "3000",
