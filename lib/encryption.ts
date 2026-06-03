@@ -5,11 +5,7 @@
  *
  * SECURITY: This module must ONLY be imported in server-side code.
  */
-
-// Use CommonJS require to bypass package.json exports restrictions
-import { createRequire } from 'node:module';
-const require = createRequire(import.meta.url);
-const { initialize } = require('../node_modules/node-seal/dist/index_allows.js');
+import initialize from "node-seal";
 
 // Cached SEAL instance (persists between requests in serverless if warm)
 let sealInstance: any = null;
