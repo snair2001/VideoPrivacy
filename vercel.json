@@ -4,6 +4,12 @@
   "devCommand": "npm run dev",
   "installCommand": "npm install --legacy-peer-deps",
   "regions": ["iad1"],
+  "functions": {
+    "app/api/**/*.ts": {
+      "memory": 1024,
+      "maxDuration": 30
+    }
+  },
   "env": {
     "NEXT_PUBLIC_CHAIN_ID": "421614",
     "NEXT_PUBLIC_RPC_URL": "https://sepolia-rollup.arbitrum.io/rpc",
