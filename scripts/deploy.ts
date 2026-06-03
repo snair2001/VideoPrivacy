@@ -49,7 +49,18 @@ async function main() {
   console.log(`NEXT_PUBLIC_CONTRACT_ADDRESS=${address}`);
 }
 
-main().catch((err) => {
-  console.error(err);
+main().catch((err: unknown) => {
+  const error = err as Error;
+  console.error("\n❌ Deployment failed:");
+  console.error("   Message:", error.message || "Unknown error");
+  if (error.stack) {
+    console.error("   Stack:", error.stack);
+  }
+  console.error("\n💡 Check your .env.local file has:");
+  console.error("   - DEPLOYER_PRIVATE_KEY");
+  console.error("   - PLATFORM_TREASURY_ADDRESS");
+  console.error("   - REVENUE_CAP_USD");
+  console.error("   - ETH_USD_FALLBACK");
+  console.error("   - PLATFORM_FEE_PERCENTAGE");
   process.exitCode = 1;
 });
