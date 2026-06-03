@@ -79,10 +79,15 @@ export async function POST(req: NextRequest) {
     );
 
     return NextResponse.json({ cid, campaignId });
-  } catch (err) {
-    console.error("[ipfs/upload] Error:", err);
+  } catch (err: any) {
+    console.error("[ipfs/upload] Full error:", err);
+    console.error("[ipfs/upload] Error stack:", err?.stack);
     return NextResponse.json(
-      { error: "Failed to upload metadata" },
+      { 
+        error: "Failed to upload metadata", 
+        details: err?.message || "Unknown error",
+        stack: process.env.NODE_ENV === "development" ? err?.stack : undefined 
+      },
       { status: 500 }
     );
   }
