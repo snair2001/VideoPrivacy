@@ -131,6 +131,7 @@ export function useWallet() {
   const disconnect = () => {
     // MetaMask does not expose a programmatic disconnect API.
     // We clear local state and set a flag so the app won't auto-reconnect on reload.
+    console.log("Disconnecting wallet...");
     setAddress(null);
     setChainId(null);
     sessionStorage.setItem("ps_disconnected", "true");
@@ -240,7 +241,14 @@ export default function WalletConnect({ className, compact = false }: WalletConn
         >
           <ExternalLink className="w-3.5 h-3.5" />
         </a>
-        <button onClick={disconnect} className="p-1 hover:text-red-400 transition-colors text-gray-500">
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            disconnect();
+          }}
+          className="p-1.5 hover:text-red-400 hover:bg-red-400/10 rounded-lg transition-all text-gray-500"
+          type="button"
+        >
           <LogOut className="w-3.5 h-3.5" />
         </button>
       </div>
