@@ -6,7 +6,10 @@
  * SECURITY: This module must ONLY be imported in server-side code.
  */
 
-import Seal from "node-seal";
+// Use CommonJS require to bypass package.json exports restrictions
+import { createRequire } from 'node:module';
+const require = createRequire(import.meta.url);
+const { initialize } = require('../node_modules/node-seal/dist/index_allows.js');
 
 // Cached SEAL instance (persists between requests in serverless if warm)
 let sealInstance: any = null;
@@ -23,7 +26,8 @@ async function initSeal(): Promise<void> {
 
   console.log("🔐 Initializing Microsoft SEAL FHE...");
   try {
-    sealInstance = await Seal();
+    sealInstance = await initialize();
+    console.log("✅ Loaded SEAL module");
 
     // Optimized BFV parameters for Vercel serverless (smaller, faster)
     const parms = sealInstance.EncryptionParameters(sealInstance.SchemeType.bfv);
@@ -37,19 +41,22 @@ async function initSeal(): Promise<void> {
     if (!context.parametersSet()) {
       throw new Error("SEAL parameters validation failed");
     }
+    console.log("✅ Created SEAL context");
 
     // Generate keys
     const keyGenerator = sealInstance.KeyGenerator(context);
     secretKey = keyGenerator.secretKey();
     publicKey = keyGenerator.createPublicKey();
+    console.log("✅ Generated keys");
 
     // Initialize tools
     encryptor = sealInstance.Encryptor(context, publicKey);
     decryptor = sealInstance.Decryptor(context, secretKey);
     batchEncoder = sealInstance.BatchEncoder(context);
+    console.log("✅ Initialized crypto tools");
 
     isInitialized = true;
-    console.log("✅ SEAL FHE initialized successfully!");
+    console.log("🎉 SEAL FHE initialized successfully!");
   } catch (error) {
     console.error("❌ SEAL initialization failed:", error);
     throw new Error(`SEAL init failed: ${(error as Error).message}`);
